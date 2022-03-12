@@ -1,0 +1,114 @@
+class Rectangle:
+  count=0 #variable the counts keeps track of no of instances
+  
+  def __init__(self,l,b,name="r1"):
+    self.length=l
+    self.breadth=b
+    self.name=name
+    self.count+=1
+  
+  @property
+  def length(self):
+    '''set the value of length = 1 if value if negative'''
+    return self._length
+  
+  
+  @length.setter
+  def length(self,s):
+    print("in g1")
+    if s<=0:
+      s=1
+    self._length=s
+    #return s
+  
+  @property
+  def breadth(self):
+    return self._breadth
+    '''set the value of length = 1 if value if negative'''
+
+  @breadth.setter
+  def breadth(self,s):
+    print("in g2")
+    if s<=0:
+      s=1
+    self._breadth=s
+       
+  
+  
+  def area(self):
+    '''returning the area of rectangle'''
+    x=(self._length*self._breadth)
+    print("area is  ",x)
+    return x
+  
+  def perimeter(self):
+    '''returning the parameter of rectangle'''
+    p=2*(self._length + self._breadth)
+    print("perimeter is ",p)
+    return p
+
+  def __str__(self):
+    return f"Length is {self.length}, Breadth is: {self.breadth}" 
+ 
+  
+  def __gt__(self,other):
+    '''comparing area of two Rectangle (>)  and check greater one'''
+    if (self.length*self.breadth)<(other.length*other.breadth):
+     return "area of {} object is greater than {} object".format(self.name,other.name)
+    else:
+      return "area of {} object is not greater than {} object".format(self.name,other.name)
+
+
+
+  
+  def __lt__(self,other):
+    '''comparing area of two Rectangle (>)  and check smaller one'''
+    if (self.length*self.breadth)<(other.length*other.breadth):
+      return "area of {} object is less than {} object".format(self.name,other.name)
+    else:
+      return "area of {} object is not less than {} object".format(self.name,other.name)
+
+  
+  def __eq__(self,other):
+    '''comparing area of two Rectangle (>)  and check if they are equal'''
+    if (self.length*self.breadth)==(other.length*other.breadth):
+       return "area of {} object is equal to {} object".format(self.name,other.name)
+    else:
+     return "area of {} object is not equal to {} object".format(self.name,other.name)
+ 
+  
+  def __le__(self,other): 
+    '''comparing area of two Rectangle (<=)  and check small or equal'''
+    if (self.length*self.breadth)<=(other.length*other.breadth):
+      return "area of {} object is less than {} object".format(self.name,other.name)
+    else:
+      return "area of {} object is not less than {} object".format(self.name,other.name)
+
+  
+  def __ge__(self,other): 
+    '''comparing area of two Rectangle (>=)  and check greater or equal'''
+    if (self.length*self.breadth)<=(other.length*other.breadth):
+      return "area of {} object is less than {} object".format(self.name,other.name)
+
+    else:
+      return "area of {} object is not less than {} object".format(self.name,other.name)
+
+
+#driver code
+  
+objR1=Rectangle(5,2,"r1")
+objR2=Rectangle(2,4,"r2")
+print(objR1<objR2)  
+
+objR3=Rectangle(5,7,"r3")
+objR4=Rectangle(9,1,"r4")
+print(objR3==objR4)
+print(objR3>objR4)
+
+#print objects
+print(objR1)
+print(objR2)
+
+print()
+
+print(Rectangle.count)
